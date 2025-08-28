@@ -2,17 +2,11 @@
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-<<<<<<< HEAD
 	font-family: 'segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-=======
-	font-family: 'segoe UI', Tahoma, Geneva, Verdana,
-	sans-serif;
->>>>>>> 49900563eb2bd4d70b9db0560fad75d30409ac81
 }
 
 html {
 	font-size: 62.5%;
-<<<<<<< HEAD
 }    
 
 /* ================= TITRES ================= */
@@ -94,20 +88,11 @@ html {
 }
 
 /* ================= CONTAINER ================= */
-=======
-}
-
-:root {
-	--width: 40vw;
-	--height: 24vw;
-}
-
->>>>>>> 49900563eb2bd4d70b9db0560fad75d30409ac81
 .container {
 	height: 100vh;
 	display: grid;
 	place-items: center;
-	background-color: #ccccf1;
+	background-color: #FFA500;
 	overflow: hidden;
 }
 
@@ -119,10 +104,7 @@ html {
     gap: 5rem;
 }
 
-<<<<<<< HEAD
 /* ================= GRILLE ================= */
-=======
->>>>>>> 49900563eb2bd4d70b9db0560fad75d30409ac81
 .cells,
 .puzzle {
 	width: var(--width);
@@ -154,11 +136,7 @@ html {
 	height: 100%;
 	background-size: var(--width) var(--height);
 	background-repeat: no-repeat;
-<<<<<<< HEAD
 	animation: dropAnim 0.5s forwards; /* ✅ corrigé */
-=======
-	animation: dropAnim 0.5s forwards;
->>>>>>> 49900563eb2bd4d70b9db0560fad75d30409ac81
 }
 
 @keyframes dropAnim {
@@ -177,16 +155,10 @@ html {
 	width: calc(var(--width) / 5);
 	height: calc(var(--height) / 4);
 	cursor: grab;
-<<<<<<< HEAD
 }
 
 /* ================= IMAGE FINALE ================= */
 .final-img {
-=======
-  }
-
-  .final-img {
->>>>>>> 49900563eb2bd4d70b9db0560fad75d30409ac81
 	width: 35vw;
 	aspect-ratio: 16 / 9;
 	background-image: url(images/images.jpg);
@@ -231,18 +203,11 @@ html {
 	transition: background-color 0.3s;
 }
 
-<<<<<<< HEAD
 .btn:hover{ /* ✅ corrigé */
 	background-color: rgba(109, 161, 240, 0.808);
 }
 
 /* ================= MODAL ================= */
-=======
-.btn:hover{
-	background-color: rgba(109, 161, 240, 0.808);
-}
-
->>>>>>> 49900563eb2bd4d70b9db0560fad75d30409ac81
 .modal {
 	position: fixed;
 	inset: 0;
@@ -267,7 +232,6 @@ html {
 	border-radius: 1rem;
 }
 
-<<<<<<< HEAD
 .modal-heading {
  	font-size: var(--fs-xlarge);
 }
@@ -287,56 +251,12 @@ html {
 	margin-inline: 0.5rem;
 	font-size: var(--fs-xlarge);
 	color: #5B3C11;
-=======
- .modal-heading {
- 	font-size: 4rem;
- }
-
-  .modal-text {
- 	font-size: 1.8rem;
- 	text-transform: uppercase;
- }
-
- .modal-btn {
-	margin-top: 2rem
-}
-
-.attempt {
-	display: inline-block;
-	margin-inline: 0.5rem;
-	font-size: 4rem;
-	color: #daa520;
-}
-
-.loader {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background-color: #9898ec;
-	display: grid;
-	place-items: center;
-	opacity: 0;
-	visibility: hidden;
-	transition: opacity 0.3s ease; /* Optionnel : ajout d'une transition */
-}
-
-.loader.active {
-	visibility: visible;
-	opacity: 1;
-}
-
-.loader img {
-	width: 10rem;
->>>>>>> 49900563eb2bd4d70b9db0560fad75d30409ac81
 }
 
 .heading {
 	position: absolute;
 	right: 2rem;
 	bottom: 2rem;
-<<<<<<< HEAD
 	font-size: var(--fs-large);
 	color: rgba(51, 51, 51, 0.365); 
 	text-transform: uppercase;
@@ -420,47 +340,4 @@ html {
   padding: 8px 15px;
   border-radius: 10px;
   z-index: 9999;
-=======
-	font-size: 3rem;
-	color: rgba(51, 51, 51, 0.365);
-	text-transform: uppercase;
-}
-
-/* Case active quand on survole avec une pièce */
-.active {
-    outline: 3px dashed #4caf50;
-    transform: scale(1.05);
-    transition: transform 0.2s ease, outline 0.2s ease;
-}
-
-/* Pièce déposée avec succès */
-.drop-success {
-    animation: dropPop 0.3s ease;
-}
-
-@keyframes dropPop {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.15); }
-    100% { transform: scale(1); }
-}
-
-/* Effet de victoire */
-.modal-victory {
-    animation: victoryFlash 1s ease-in-out 3;
-}
-
-@keyframes victoryFlash {
-    0%, 100% { background-color: transparent; }
-    50% { background-color: rgba(76, 175, 80, 0.3); }
-}
-
-/* Effet de défaite */
-.modal-defeat {
-    animation: defeatFlash 1s ease-in-out 3;
-}
-
-@keyframes defeatFlash {
-    0%, 100% { background-color: transparent; }
-    50% { background-color: rgba(244, 67, 54, 0.3); }
->>>>>>> 49900563eb2bd4d70b9db0560fad75d30409ac81
 }
