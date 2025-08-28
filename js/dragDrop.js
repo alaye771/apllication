@@ -5,6 +5,7 @@ class DragDrop {
         this.positionElements = new PositionElements();
         this.selected = null;
         this.points = { correct: 0, wrong: 0 };
+<<<<<<< HEAD
         this.timer = null;
         this.timeLimit = 0;   // ⏳ chrono par pièce
         this.globalTime = 300; // ⏰ chrono global pour tout le puzzle
@@ -15,6 +16,11 @@ class DragDrop {
 
         // ✅ Lancer le chrono global dès le début
         this.startGlobalTimer();
+=======
+
+        this.dragDropEvents();
+        this.imageChange();
+>>>>>>> 49900563eb2bd4d70b9db0560fad75d30409ac81
     }
 
     // ---------------------------
@@ -25,7 +31,10 @@ class DragDrop {
 
         draggableDivs.forEach(draggableDiv => {
             draggableDiv.addEventListener('dragstart', (e) => this.onDragStart(e));
+<<<<<<< HEAD
             draggableDiv.addEventListener('dragend', () => this.clearTimer()); 
+=======
+>>>>>>> 49900563eb2bd4d70b9db0560fad75d30409ac81
         });
 
         puzzleDivs.forEach((puzzleDiv, i) => {
@@ -33,6 +42,7 @@ class DragDrop {
                 e.preventDefault();
                 e.dataTransfer.dropEffect = 'move';
             });
+<<<<<<< HEAD
 
             puzzleDiv.addEventListener('drop', () => {
                 puzzleDiv.classList.remove("active");
@@ -40,11 +50,18 @@ class DragDrop {
                 this.clearTimer(); 
             });
 
+=======
+            puzzleDiv.addEventListener('drop', () => {
+                puzzleDiv.classList.remove("active");
+                this.onDrop(i);
+            });
+>>>>>>> 49900563eb2bd4d70b9db0560fad75d30409ac81
             puzzleDiv.addEventListener('dragenter', () => puzzleDiv.classList.add("active"));
             puzzleDiv.addEventListener('dragleave', () => puzzleDiv.classList.remove("active"));
         });
     }
 
+<<<<<<< HEAD
     // ---------------------------
     // CHRONO PAR PIÈCE
     // ---------------------------
@@ -147,6 +164,12 @@ class DragDrop {
     // ---------------------------
     // DROP & ÉTAT DU JEU
     // ---------------------------
+=======
+    onDragStart(e) {
+        this.selected = e.target;
+    }
+
+>>>>>>> 49900563eb2bd4d70b9db0560fad75d30409ac81
     onDrop(index) {
         const { puzzleDivs } = this.positionElements.elements;
 
@@ -168,45 +191,77 @@ class DragDrop {
         }
     }
 
+<<<<<<< HEAD
     checkGameState() {
         const { puzzleDivs, modal, modalText, modalBtn, cellsAmount } = this.positionElements.elements;
 
         if (this.points.correct === cellsAmount) {
             clearInterval(this.globalTimer); // stop chrono global
+=======
+    // ---------------------------
+    // VÉRIFICATION ÉTAT DU JEU
+    // ---------------------------
+    checkGameState() {
+        const { puzzleDivs, modal, modalText, modalBtn, cellsAmount } = this.positionElements.elements;
+
+        // ✅ Victoire
+        if (this.points.correct === cellsAmount) {
+>>>>>>> 49900563eb2bd4d70b9db0560fad75d30409ac81
             this.showModal(
                 modal,
                 modalText,
                 modalBtn,
+<<<<<<< HEAD
                 `<h2 class="victory-title">🎉 VICTOIRE ! 🎉</h2>
                  <p>Bravo, vous avez terminé le puzzle.</p>
                  <p>✅ Pièces correctes : <strong>${this.points.correct}</strong></p>
                  <p>❌ Erreurs : <strong>${this.points.wrong}</strong></p>`,
                 "victory"
+=======
+                `🎉 VICTOIRE ! 🎉\n\nBravo, vous avez terminé le puzzle.\n\n✅ Pièces correctes : ${this.points.correct}\n❌ Erreurs : ${this.points.wrong}`
+>>>>>>> 49900563eb2bd4d70b9db0560fad75d30409ac81
             );
             return;
         }
 
+<<<<<<< HEAD
         if (!puzzleDivs.some(div => !div.firstElementChild) && this.points.correct < cellsAmount) {
             clearInterval(this.globalTimer); // stop chrono global
+=======
+        // ❌ Défaite
+        if (!puzzleDivs.some(div => !div.firstElementChild) && this.points.correct < cellsAmount) {
+>>>>>>> 49900563eb2bd4d70b9db0560fad75d30409ac81
             this.showModal(
                 modal,
                 modalText,
                 modalBtn,
+<<<<<<< HEAD
                 `<h2 class="defeat-title">😢 DÉFAITE 😢</h2>
                  <p>Le puzzle est terminé, mais certaines pièces ne sont pas à leur place.</p>
                  <p>✅ Pièces correctes : <strong>${this.points.correct}</strong></p>
                  <p>❌ Erreurs : <strong>${this.points.wrong}</strong></p>
                  <p>👉 Cliquez sur "Rejouer" pour recommencer.</p>`,
                 "defeat"
+=======
+                `😢 DÉFAITE 😢\n\nLe puzzle est terminé, mais certaines pièces ne sont pas à leur place.\n\n✅ Pièces correctes : ${this.points.correct}\n❌ Erreurs : ${this.points.wrong}\n\nCliquez sur "Rejouer" pour recommencer.`
+>>>>>>> 49900563eb2bd4d70b9db0560fad75d30409ac81
             );
         }
     }
 
+<<<<<<< HEAD
     showModal(modal, textElement, modalBtn, message, state) {
+=======
+    // ---------------------------
+    // AFFICHAGE DU MODAL
+    // ---------------------------
+    showModal(modal, textElement, modalBtn, message) {
+>>>>>>> 49900563eb2bd4d70b9db0560fad75d30409ac81
         modal.style.opacity = "1";
         modal.style.visibility = "visible";
 
         if (textElement) {
+<<<<<<< HEAD
             textElement.innerHTML = message;
             textElement.classList.add("modal-animate");
         }
@@ -216,6 +271,20 @@ class DragDrop {
         modalBtn.onclick = () => location.reload();
     }
 
+=======
+            textElement.textContent = message;
+            textElement.classList.add("modal-animate");
+        }
+
+        // ✅ Le bouton devient "Rejouer" et recharge la page
+        modalBtn.textContent = "🔄 Rejouer";
+        modalBtn.onclick = () => location.reload();
+    }
+
+    // ---------------------------
+    // CHANGEMENT D'IMAGE
+    // ---------------------------
+>>>>>>> 49900563eb2bd4d70b9db0560fad75d30409ac81
     imageChange() {
         const { finalImg, inputFile, draggableDivs } = this.positionElements.elements;
 
