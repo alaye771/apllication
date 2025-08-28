@@ -92,7 +92,7 @@ html {
 	height: 100vh;
 	display: grid;
 	place-items: center;
-	background-color: #FFA500;
+	background-color: #ccccf1;
 	overflow: hidden;
 }
 
