@@ -23,6 +23,7 @@ class DragDrop {
                 e.preventDefault();
                 e.dataTransfer.dropEffect = 'move';
             });
+<<<<<<< HEAD
 
             puzzleDiv.addEventListener('drop', () => {
                 puzzleDiv.classList.remove("active");
@@ -41,6 +42,14 @@ class DragDrop {
                 puzzleDiv.textContent = ""; // efface emoji
                 puzzleDiv.classList.remove("emoji-correct", "emoji-wrong");
             });
+=======
+            puzzleDiv.addEventListener('drop', () => {
+                puzzleDiv.classList.remove("active");
+                this.onDrop(i);
+            });
+            puzzleDiv.addEventListener('dragenter', () => puzzleDiv.classList.add("active"));
+            puzzleDiv.addEventListener('dragleave', () => puzzleDiv.classList.remove("active"));
+>>>>>>> 3420b09 (Initial commit)
         });
     }
 
@@ -51,14 +60,24 @@ class DragDrop {
     onDrop(index) {
         const { puzzleDivs } = this.positionElements.elements;
 
+<<<<<<< HEAD
         // 🧩 Si la case est vide
+=======
+>>>>>>> 3420b09 (Initial commit)
         if (puzzleDivs[index].children.length === 0) {
             this.selected.style.top = '0';
             this.selected.style.left = '0';
             this.selected.style.border = 'none';
             puzzleDivs[index].append(this.selected);
 
-            // Vérifie victoire/défaite
+            if (Number(this.selected.dataset.index) === index) {
+                this.points.correct++;
+                this.selected.classList.add("correct-piece");
+            } else {
+                this.points.wrong++;
+                this.selected.classList.add("wrong-piece");
+            }
+
             this.checkGameState();
         }
     }
@@ -85,6 +104,7 @@ class DragDrop {
     checkGameState() {
         const { puzzleDivs, modal, modalText, modalBtn, cellsAmount } = this.positionElements.elements;
 
+<<<<<<< HEAD
         this.points = { correct: 0, wrong: 0 };
 
         puzzleDivs.forEach(div => {
@@ -103,10 +123,24 @@ class DragDrop {
                 modalText, 
                 modalBtn, 
                 `🎉 Bravo, tu as gagné ! ✅ Erreurs : ${this.points.wrong} 😅`
+=======
+        // ✅ Victoire
+        if (this.points.correct === cellsAmount) {
+            this.showModal(
+                modal,
+                modalText,
+                modalBtn,
+                `<h2 class="victory-title">🎉 VICTOIRE ! 🎉</h2>
+                 <p>Bravo, vous avez terminé le puzzle.</p>
+                 <p>✅ Pièces correctes : <strong>${this.points.correct}</strong></p>
+                 <p>❌ Erreurs : <strong>${this.points.wrong}</strong></p>`,
+                "victory"
+>>>>>>> 3420b09 (Initial commit)
             );
             return;
         }
 
+<<<<<<< HEAD
         // 😢 Défaite
         if (!puzzleDivs.some(div => !div.firstElementChild) && this.points.correct < cellsAmount) {
             this.showModal(
@@ -114,10 +148,25 @@ class DragDrop {
                 modalText, 
                 modalBtn, 
                 "❌ Dommage, tu as perdu 😢\n👉 Réessaie encore !"
+=======
+        // ❌ Défaite
+        if (!puzzleDivs.some(div => !div.firstElementChild) && this.points.correct < cellsAmount) {
+            this.showModal(
+                modal,
+                modalText,
+                modalBtn,
+                `<h2 class="defeat-title">😢 DÉFAITE 😢</h2>
+                 <p>Le puzzle est terminé, mais certaines pièces ne sont pas à leur place.</p>
+                 <p>✅ Pièces correctes : <strong>${this.points.correct}</strong></p>
+                 <p>❌ Erreurs : <strong>${this.points.wrong}</strong></p>
+                 <p>👉 Cliquez sur "Rejouer" pour recommencer.</p>`,
+                "defeat"
+>>>>>>> 3420b09 (Initial commit)
             );
         }
     }
 
+<<<<<<< HEAD
     // --------------------------- 🪄 AFFICHAGE DU MODAL
     showModal(modal, textElement, modalBtn, message) {
         modal.style.opacity = "1";
@@ -125,6 +174,29 @@ class DragDrop {
 
         if (textElement) textElement.textContent = message;
         modalBtn.textContent = "🔄 Rejouer";
+=======
+    // ---------------------------
+    // AFFICHAGE DU MODAL
+    // ---------------------------
+    showModal(modal, textElement, modalBtn, message, state) {
+        modal.style.opacity = "1";
+        modal.style.visibility = "visible";
+
+        if (textElement) {
+            textElement.innerHTML = message; // ✅ permet d'injecter HTML stylé
+            textElement.classList.add("modal-animate");
+        }
+
+        // ✅ Le bouton devient "Rejouer"
+        modalBtn.textContent = "🔄 Rejouer";
+
+        if (state === "victory") {
+            modalBtn.className = "modal-btn victory-btn";
+        } else {
+            modalBtn.className = "modal-btn defeat-btn";
+        }
+
+>>>>>>> 3420b09 (Initial commit)
         modalBtn.onclick = () => location.reload();
     }
 
